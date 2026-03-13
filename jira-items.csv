@@ -1,0 +1,21 @@
+Issue Key,Summary,Issue Type,Description,Assignee,Estimated Hours
+PROJ-101,Build new payment API,Story,Create Stripe integration with webhook support,alice,40
+PROJ-102,Fix login timeout bug,Bug,Users getting logged out after 5 minutes of inactivity,bob,8
+PROJ-103,Setup CI/CD Pipeline,Task,Initialize Jenkins environment for new microservice,carol,60
+PROJ-104,Monthly Server Monitoring,Task,Monitor logs and uptime for production systems,dave,4
+PROJ-105,Research AI feasibility,Spike,Evaluate market for new ML recommendation feature,eve,20
+PROJ-106,Upgrade database to PostgreSQL 15,Story,Migration from v12 to v15 with schema changes,frank,80
+PROJ-107,Fix critical security vulnerability,Bug,Patch CVE-2024-1234 in authentication module,grace,16
+PROJ-108,Refactor legacy payment module,Story,Improve code quality and reduce technical debt,henry,120
+PROJ-109,Add analytics tracking to checkout,Story,Implement Google Analytics events for funnel tracking,ivy,24
+PROJ-110,Migrate from AWS to Azure,Epic,Full cloud provider migration including all services,jack,400
+PROJ-111,Update npm dependencies,Task,Quarterly dependency updates for security patches,kate,12
+PROJ-112,Build internal admin dashboard,Story,New tool for customer support team to manage accounts,leo,60
+PROJ-113,Investigate production incident,Service Request,Root cause analysis for 2-hour outage on 2024-01-15,mike,8
+PROJ-114,Optimize database queries for performance,Task,Reduce query time from 5s to 500ms for reports,nina,40
+PROJ-115,Decommission old payment gateway,Task,Remove Stripe v1 integration after migration to v2,oscar,20
+PROJ-116,PoC for blockchain integration,Spike,Proof of concept for crypto payment option,paul,30
+PROJ-117,Fix UI alignment on mobile,Bug,CSS issues on iPhone Safari browser,quinn,4
+PROJ-118,Implement SSO for enterprise clients,Story,OAuth2 integration with Okta for B2B customers,rachel,80
+PROJ-119,Weekly backup verification,Task,Confirm backup integrity and restore testing,steve,2
+PROJ-120,Enhance search functionality with AI,Story,Add semantic search capabilities using embeddings,tina,100

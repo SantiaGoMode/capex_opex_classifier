@@ -1,0 +1,11 @@
+Category,Classification,Jira Issue Types,Description,Logic/Rule
+New Feature Development,CapEx,"Epic, Story","Development of new functionality that adds value to the product.","Create/Build/Enhance"
+Major Upgrades,CapEx,"Epic, Story","Significant architectural changes or version jumps that extend asset life.","Upgrade/Migrate/Scale"
+Infrastructure Build-out,CapEx,"Epic, Task","Initial setup of environments, CI/CD pipelines, or database schemas.","Architect/Initialize"
+Platform Integration,CapEx,Story,"Building new connections to 3rd party services or internal APIs.","Integrate/Connect"
+Bug Fixes,OpEx,"Bug, Sub-task","Correcting defects to return software to its intended state.","Fix/Repair/Patch"
+Routine Maintenance,OpEx,Task,"Standard upkeep, dependency updates, and minor technical debt.","Maintain/Update/Clean"
+Customer Support/Triage,OpEx,Service Request,"Time spent investigating user issues or providing guidance.","Support/Investigate/Triage"
+Discovery & Research,OpEx,Spike,"Preliminary feasibility studies or market research before a project starts.","Research/Evaluate/Spike"
+DevOps & Monitoring,OpEx,Task,"Ongoing operational tasks like log monitoring and on-call rotations.","Monitor/Operate"
+Decommissioning,OpEx,Task,"Work related to shutting down or removing old features/servers.","Retire/Remove/Delete"
