@@ -36,23 +36,22 @@
       <section class="hero shell">
         <div class="hero-glow" aria-hidden="true"></div>
         <div class="hero-copy">
-          <div class="eyebrow"><span></span>Applied AI · Finance operations</div>
-          <h1>Translate Jira work into <em>finance language.</em></h1>
-          <p>A local proof of concept that applies your company standards to Jira items, classifies CapEx versus OpEx, and explains every decision.</p>
+          <div class="eyebrow"><span></span>AI-assisted finance review</div>
+          <h1>Classify technology work with <em>clear evidence.</em></h1>
+          <p>Apply your capitalization policy to Jira exports and get a first-pass CapEx or OpEx recommendation, confidence score, and review notes.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#use-cases">Explore use cases <span>→</span></a>
             <a class="button button-secondary" href="guide.html">Run the POC <span>→</span></a>
           </div>
           <div class="hero-proof" aria-label="Project highlights">
-            <div><strong>Local</strong><span>runs with Ollama</span></div>
-            <div><strong>Traceable</strong><span>reasoning per issue</span></div>
-            <div><strong>Open</strong><span>source POC</span></div>
+            <div><strong>Local processing</strong><span>runs with Ollama</span></div>
+            <div><strong>Policy based</strong><span>uses your standards</span></div>
+            <div><strong>Human reviewed</strong><span>supports final judgment</span></div>
           </div>
         </div>
 
         <div class="hero-visual" aria-label="Illustration of Jira items moving through the classifier into a finance review">
           <div class="classifier-window">
-            <div class="data-rail" aria-hidden="true"><span>CAPITAL SIGNAL</span><i>01</i><i>02</i><i>03</i></div>
             <div class="window-bar">
               <div class="traffic"><i></i><i></i><i></i></div>
               <span>Classification run</span>
@@ -89,43 +88,34 @@
               </div>
             </div>
           </div>
-          <div class="float-card float-evidence">
-            <span class="mini-icon">✓</span>
-            <div><strong>Reasoning attached</strong><small>Ready for human review</small></div>
-          </div>
-          <div class="float-card float-model">
-            <span class="model-glyph">◇</span>
-            <div><strong>qwen2.5:32b</strong><small>Running via Ollama</small></div>
-            <i></i>
-          </div>
         </div>
       </section>
 
       <section class="bridge-strip">
         <div class="shell">
-          <span>Built to create a shared language between</span>
+          <span>A consistent handoff across</span>
           <div><strong>ENGINEERING</strong><i>→</i><strong>FINANCE</strong><i>→</i><strong>AUDIT</strong></div>
         </div>
       </section>
 
       <section class="production-proof">
         <div class="shell">
-          <span class="proof-index">PRODUCTION / 01</span>
+          <span class="proof-index">PRODUCTION USE</span>
           <div>
-            <strong>Tested beyond the prototype.</strong>
-            <p>This approach has been tested and implemented in production environments by a client—validated within Apptio Targetprocess and deployed through Kiro.</p>
+            <strong>Used in production.</strong>
+            <p>A client tested the approach in an Apptio Targetprocess production environment and deployed the implementation with Kiro.</p>
           </div>
-          <span class="proof-status"><i></i> Client validated</span>
+          <span class="proof-status"><i></i> Client implementation</span>
         </div>
       </section>
 
       <section class="section shell" id="use-cases">
         <div class="section-heading">
           <div>
-            <div class="eyebrow"><span></span>Practical use cases</div>
-            <h2>Start with the handoffs<br>that create friction.</h2>
+            <div class="eyebrow"><span></span>Use cases</div>
+            <h2>Where the classifier helps.</h2>
           </div>
-          <p>The prototype is intentionally narrow: it helps teams turn technical work descriptions into consistent, reviewable finance signals.</p>
+          <p>Prepare finance reviews, identify exceptions, and make classification decisions easier to explain.</p>
         </div>
         <div class="use-case-grid">
           <article class="use-case featured">
@@ -173,9 +163,9 @@
       <section class="workflow-section" id="how-it-works">
         <div class="shell">
           <div class="workflow-copy">
-            <div class="eyebrow light"><span></span>One focused workflow</div>
-            <h2>Standards in.<br>Reviewable evidence out.</h2>
-            <p>The agent does not replace accounting judgment. It organizes the evidence so people can spend less time translating and more time reviewing exceptions.</p>
+            <div class="eyebrow light"><span></span>How it works</div>
+            <h2>A review workflow, not a black box.</h2>
+            <p>The classifier organizes evidence and highlights uncertainty. Finance retains the final decision.</p>
             <a class="text-link" href="guide.html">Read the quick-start guide <span>→</span></a>
           </div>
           <ol class="workflow-list">
@@ -206,9 +196,9 @@
       <section class="article-section shell">
         <div class="article-card">
           <div>
-            <div class="eyebrow"><span></span>From the project’s premise</div>
-            <blockquote>“How AI can help bridge the gap between tech and finance.”</blockquote>
-            <p>Read the thinking behind the prototype and why translation—not just automation—is the opportunity.</p>
+            <div class="eyebrow"><span></span>Project background</div>
+            <blockquote>How AI can help bridge the gap between tech and finance.</blockquote>
+            <p>Read why this workflow focuses on clearer handoffs between technical teams and finance.</p>
           </div>
           <a class="button button-primary" href="https://medium.com/@cris.santiago/how-ai-can-help-bridge-the-gap-between-tech-and-finance-bb49a8a4bf48">Read on Medium <span>↗</span></a>
         </div>
@@ -217,11 +207,11 @@
       <section class="cta-section">
         <div class="shell cta">
           <div>
-            <div class="eyebrow light"><span></span>Bare POC, real conversation</div>
-            <h2>Try it with a small<br>slice of Jira work.</h2>
+            <div class="eyebrow light"><span></span>Try the classifier</div>
+            <h2>Evaluate it on your own work.</h2>
           </div>
           <div>
-            <p>Bring your classification standards and a CSV export. Run locally, inspect the evidence, and use the gaps to improve the policy.</p>
+            <p>Use a small Jira export and your existing classification standards. Review the results before expanding the test.</p>
             <div class="hero-actions">
               <a class="button button-primary" href="guide.html">Get started <span>→</span></a>
               <a class="button button-dark" href="https://github.com/SantiaGoMode/capex_opex_classifier">View source <span>↗</span></a>
