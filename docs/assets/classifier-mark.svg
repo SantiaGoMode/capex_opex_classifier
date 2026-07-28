@@ -1,12 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CapEx OpEx Classifier">
-  <defs>
-    <linearGradient id="g" x1="7" y1="7" x2="57" y2="57" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#ffe37d"/>
-      <stop offset="1" stop-color="#f4a81c"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="17" fill="#151512"/>
-  <path d="M19 17.5h26a5 5 0 0 1 5 5v19a5 5 0 0 1-5 5H19a5 5 0 0 1-5-5v-19a5 5 0 0 1 5-5Z" fill="none" stroke="url(#g)" stroke-width="3"/>
-  <path d="M23 27h18M23 37h11" fill="none" stroke="url(#g)" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="43" cy="37" r="4" fill="url(#g)"/>
+  <rect width="64" height="64" rx="12" fill="#101c35"/>
+  <path d="M16 16h32v32H16z" fill="none" stroke="#74f2ce" stroke-width="2.5"/>
+  <path d="M22 26h20M22 37h12" fill="none" stroke="#f2f7ff" stroke-width="2.5" stroke-linecap="square"/>
+  <path d="m38 34 5 5-5 5" fill="none" stroke="#6da8ff" stroke-width="2.5"/>
 </svg>

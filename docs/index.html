@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#10100f">
+    <meta name="theme-color" content="#101c35">
     <meta name="description" content="A local AI proof of concept that classifies Jira work as CapEx or OpEx using your finance standards.">
     <meta property="og:title" content="CapEx / OpEx Classifier">
     <meta property="og:description" content="Turn Jira work into finance-ready classifications—with evidence, confidence, and a human-readable audit trail.">
@@ -12,12 +12,12 @@
     <link rel="icon" href="assets/classifier-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/site.css">
   </head>
-  <body>
+  <body class="visual-v2">
     <header class="site-header">
       <div class="shell header-inner">
         <a class="brand" href="index.html" aria-label="CapEx OpEx Classifier home">
           <img src="assets/classifier-mark.svg" width="34" height="34" alt="">
-          <span>CapEx<span class="slash">/</span>OpEx</span>
+          <span>CapEx<span class="slash">/</span>OpEx Classifier</span>
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
           <span class="sr-only">Toggle navigation</span>
@@ -36,7 +36,7 @@
       <section class="hero shell">
         <div class="hero-glow" aria-hidden="true"></div>
         <div class="hero-copy">
-          <div class="eyebrow"><span></span>AI for technology finance</div>
+          <div class="eyebrow"><span></span>Applied AI · Finance operations</div>
           <h1>Translate Jira work into <em>finance language.</em></h1>
           <p>A local proof of concept that applies your company standards to Jira items, classifies CapEx versus OpEx, and explains every decision.</p>
           <div class="hero-actions">
@@ -52,6 +52,7 @@
 
         <div class="hero-visual" aria-label="Illustration of Jira items moving through the classifier into a finance review">
           <div class="classifier-window">
+            <div class="data-rail" aria-hidden="true"><span>CAPITAL SIGNAL</span><i>01</i><i>02</i><i>03</i></div>
             <div class="window-bar">
               <div class="traffic"><i></i><i></i><i></i></div>
               <span>Classification run</span>
@@ -104,6 +105,17 @@
         <div class="shell">
           <span>Built to create a shared language between</span>
           <div><strong>ENGINEERING</strong><i>→</i><strong>FINANCE</strong><i>→</i><strong>AUDIT</strong></div>
+        </div>
+      </section>
+
+      <section class="production-proof">
+        <div class="shell">
+          <span class="proof-index">PRODUCTION / 01</span>
+          <div>
+            <strong>Tested beyond the prototype.</strong>
+            <p>This approach has been tested and implemented in production environments by a client—validated within Apptio Targetprocess and deployed through Kiro.</p>
+          </div>
+          <span class="proof-status"><i></i> Client validated</span>
         </div>
       </section>
 
@@ -223,7 +235,7 @@
       <div class="shell">
         <a class="brand footer-brand" href="index.html">
           <img src="assets/classifier-mark.svg" width="30" height="30" alt="">
-          <span>CapEx<span class="slash">/</span>OpEx</span>
+          <span>CapEx<span class="slash">/</span>OpEx Classifier</span>
         </a>
         <p>Experimental AI-assisted classification. Human accounting review required.</p>
         <div><a href="guide.html">Docs</a><a href="https://github.com/SantiaGoMode/capex_opex_classifier">GitHub</a><a href="https://medium.com/@cris.santiago/how-ai-can-help-bridge-the-gap-between-tech-and-finance-bb49a8a4bf48">Medium</a></div>
