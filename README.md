@@ -2,6 +2,10 @@
 
 A finance analyst AI agent that classifies Jira work items as Capital Expenditure (CapEx) or Operational Expenditure (OpEx) using Qwen 2.5 32B via Ollama.
 
+## Project Site
+
+Explore the [use-case overview](docs/index.html) or open the [quick-start guide](docs/guide.html).
+
 ## How It Works
 
 The agent runs in three phases:

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10100f">
+    <meta name="description" content="Set up and run the CapEx OpEx Classifier proof of concept locally.">
+    <title>Quick-start guide — CapEx / OpEx Classifier</title>
+    <link rel="icon" href="assets/classifier-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/site.css">
+  </head>
+  <body class="guide-page">
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="index.html" aria-label="CapEx OpEx Classifier home">
+          <img src="assets/classifier-mark.svg" width="34" height="34" alt="">
+          <span>CapEx<span class="slash">/</span>OpEx</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="sr-only">Toggle navigation</span>
+          <span></span><span></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+          <a href="index.html#use-cases">Use cases</a>
+          <a href="index.html#how-it-works">How it works</a>
+          <a aria-current="page" href="guide.html">Docs</a>
+          <a class="github-link" href="https://github.com/SantiaGoMode/capex_opex_classifier">View on GitHub <span>↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="guide-shell shell">
+      <aside class="guide-nav" aria-label="Documentation sections">
+        <strong>QUICK START</strong>
+        <a href="#overview">Overview</a>
+        <a href="#requirements">Requirements</a>
+        <a href="#install">Install</a>
+        <a href="#standards">Standards CSV</a>
+        <a href="#jira">Jira CSV</a>
+        <a href="#run">Run the classifier</a>
+        <a href="#outputs">Review outputs</a>
+        <a href="#configuration">Configuration</a>
+        <a href="#limits">POC limits</a>
+      </aside>
+
+      <article class="guide-content">
+        <div class="guide-hero" id="overview">
+          <div class="eyebrow"><span></span>Project documentation</div>
+          <h1>Run the classifier locally.</h1>
+          <p>Bring a standards file and a Jira export. The agent applies the policy, classifies each issue, and writes both structured results and an explanation report.</p>
+          <div class="guide-note">
+            <span>POC</span>
+            <p>This project is an experiment, not an accounting control. Use the output to accelerate review—not to replace qualified finance judgment.</p>
+          </div>
+        </div>
+
+        <section id="requirements">
+          <h2>Requirements</h2>
+          <p>The current prototype runs against a local Ollama model. You’ll need:</p>
+          <ul>
+            <li>Python 3.10 or newer</li>
+            <li><a href="https://ollama.com/">Ollama</a> running locally</li>
+            <li>The <code>qwen2.5:32b</code> model</li>
+            <li>Python packages <code>ollama</code> and <code>pandas</code></li>
+          </ul>
+          <p class="quiet">Qwen 2.5 32B is a large local model. Make sure the machine has enough memory for your Ollama configuration.</p>
+        </section>
+
+        <section id="install">
+          <div class="section-label">01</div>
+          <h2>Install the local dependencies</h2>
+          <p>Pull the model, then install the two Python packages used by the script.</p>
+          <pre><code><span class="prompt">$</span> ollama pull qwen2.5:32b
+<span class="prompt">$</span> pip install ollama pandas</code></pre>
+        </section>
+
+        <section id="standards">
+          <div class="section-label">02</div>
+          <h2>Describe your classification standards</h2>
+          <p>Edit <code>work-categories.csv</code>. Each row gives the agent a category, its expected classification, applicable issue types, and the language that signals a match.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Column</th><th>What it tells the agent</th></tr></thead>
+              <tbody>
+                <tr><td>Category</td><td>The exact policy category name returned in results.</td></tr>
+                <tr><td>Classification</td><td>Whether the category maps to CapEx or OpEx.</td></tr>
+                <tr><td>Jira Issue Types</td><td>The comma-separated issue types eligible for the category.</td></tr>
+                <tr><td>Description</td><td>Plain-language scope and intent of the category.</td></tr>
+                <tr><td>Logic/Rule</td><td>Keywords or signals used to match Jira work.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="jira">
+          <div class="section-label">03</div>
+          <h2>Add a Jira export</h2>
+          <p>Place the items to classify in <code>jira-items.csv</code>. <code>Issue Key</code> and <code>Summary</code> are required; more context improves the quality of the reasoning.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Column</th><th>Status</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td>Issue Key</td><td><span class="required">Required</span></td><td>PROJ-101</td></tr>
+                <tr><td>Summary</td><td><span class="required">Required</span></td><td>Build new export API</td></tr>
+                <tr><td>Issue Type</td><td>Recommended</td><td>Story</td></tr>
+                <tr><td>Description</td><td>Recommended</td><td>Business and technical context</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="run">
+          <div class="section-label">04</div>
+          <h2>Run one classification pass</h2>
+          <pre><code><span class="prompt">$</span> python capex-opex.py</code></pre>
+          <p>The agent loads the standards, classifies Jira items in batches of five, merges the results, and generates a separate reasoning report.</p>
+          <ol class="phase-list">
+            <li><span>1</span><div><strong>Context loading</strong><p>Formats and passes the company standards to the local model.</p></div></li>
+            <li><span>2</span><div><strong>Classification</strong><p>Returns CapEx or OpEx, confidence, reasoning, matched category, and matched rule.</p></div></li>
+            <li><span>3</span><div><strong>Reasoning report</strong><p>Rewrites each decision into a plain-language format for review.</p></div></li>
+          </ol>
+        </section>
+
+        <section id="outputs">
+          <div class="section-label">05</div>
+          <h2>Review both outputs</h2>
+          <p>Files are timestamped and written to <code>output/</code>.</p>
+          <div class="output-grid">
+            <article>
+              <span>CSV</span>
+              <h3>Classified items</h3>
+              <code>&lt;timestamp&gt;_classified_items.csv</code>
+              <p>The original Jira data plus classification, confidence, short reasoning, matched category, and matched rule.</p>
+            </article>
+            <article>
+              <span>TXT</span>
+              <h3>Reasoning report</h3>
+              <code>&lt;timestamp&gt;_classification_reasoning.txt</code>
+              <p>A human-readable explanation and audit notes for every issue the model classified.</p>
+            </article>
+          </div>
+          <div class="review-callout">
+            <strong>Start with the exceptions.</strong>
+            <p>The script flags confidence below 70% in its terminal summary. Review those items first, then sample the high-confidence decisions for policy fit.</p>
+          </div>
+        </section>
+
+        <section id="configuration">
+          <h2>Configuration</h2>
+          <p>Edit the <code>CONFIG</code> dictionary near the top of <code>capex-opex.py</code> to change the model, file paths, output directory, batch size, temperature, or context window.</p>
+          <pre><code>CONFIG = {
+    "model": "qwen2.5:32b",
+    "standards_file": "work-categories.csv",
+    "input_file": "jira-items.csv",
+    "output_dir": "output",
+    "batch_size": 5,
+}</code></pre>
+        </section>
+
+        <section id="limits">
+          <h2>Know the boundaries of the POC</h2>
+          <div class="limits-grid">
+            <div><strong>No accounting authority</strong><p>The output is a recommendation for human review, not an accounting conclusion.</p></div>
+            <div><strong>Prompt-based matching</strong><p>Quality depends on the standards, Jira descriptions, and model behavior.</p></div>
+            <div><strong>Conservative fallback</strong><p>Uncertain classifications default to OpEx, and parse failures produce a 50% confidence fallback.</p></div>
+            <div><strong>Local batch workflow</strong><p>There is no Jira integration, web interface, approval flow, or persistent database in this prototype.</p></div>
+          </div>
+        </section>
+
+        <div class="guide-next">
+          <div>
+            <span>NEXT STEP</span>
+            <strong>Inspect the example input files</strong>
+          </div>
+          <a href="https://github.com/SantiaGoMode/capex_opex_classifier">Browse the repository <span>↗</span></a>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <div class="shell">
+        <a class="brand footer-brand" href="index.html">
+          <img src="assets/classifier-mark.svg" width="30" height="30" alt="">
+          <span>CapEx<span class="slash">/</span>OpEx</span>
+        </a>
+        <p>Experimental AI-assisted classification. Human accounting review required.</p>
+        <div><a href="index.html">Overview</a><a href="https://github.com/SantiaGoMode/capex_opex_classifier">GitHub</a></div>
+      </div>
+    </footer>
+    <script src="assets/site.js"></script>
+  </body>
+</html>
